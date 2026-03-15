@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduStream Premium | Learn from the Best</title>
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Header -->
+    <header class="top-header">
+        <div class="logo">Edu<span>Stream</span></div>
+        <div class="header-icons">
+            <div class="notification-icon">
+                <i class="fa-regular fa-bell"></i>
+                <span class="badge">3</span>
+            </div>
+            <img src="https://ui-avatars.com/api/?name=User" alt="Profile" class="user-avatar" onclick="showPage('dashboard')">
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main id="app-container">
+        
+        <!-- Home Section -->
+        <section id="home" class="page active">
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <h1>Unlock Your Potential</h1>
+                    <p>Prepare for top exams with India's best educators.</p>
+                    <button class="btn-primary">Get Started</button>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <h3>Featured Courses</h3>
+                <span onclick="showPage('courses')">View All</span>
+            </div>
+
+            <div class="course-slider">
+                <div class="glass-card course-card">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400" alt="Course">
+                    <div class="card-content">
+                        <span class="category">Data Science</span>
+                        <h4>Python for Beginners</h4>
+                        <div class="instructor">By Dr. Angela</div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 65%"></div>
+                        </div>
+                        <div class="card-footer">
+                            <span>65% Complete</span>
+                            <button class="btn-sm">Continue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="promo-banner">
+                <i class="fa-solid fa-trophy"></i>
+                <div>
+                    <h4>Sunday Scholarship Test</h4>
+                    <p>Rank #1 wins 100% Scholarship!</p>
+                </div>
+                <button onclick="showPage('mocktest')">Enroll</button>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses" class="page">
+            <div class="search-bar">
+                <input type="text" placeholder="Search for courses, topics...">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="filter-chips">
+                <span class="chip active">All</span>
+                <span class="chip">Coding</span>
+                <span class="chip">Design</span>
+                <span class="chip">Finance</span>
+            </div>
+            <div id="course-list" class="grid-layout">
+                <!-- Courses injected via JS -->
+            </div>
+        </section>
+
+        <!-- Mock Test Section -->
+        <section id="mocktest" class="page">
+            <div class="test-header">
+                <h2>Weekly Mock Series</h2>
+                <p>Real-time exam environment</p>
+            </div>
+            <div class="glass-card test-card">
+                <h3>Mathematics Mock Test #4</h3>
+                <p>30 Questions | 45 Minutes</p>
+                <button class="btn-primary" onclick="startQuiz()">Start Test Now</button>
+            </div>
+        </section>
+
+        <!-- Leaderboard Section -->
+        <section id="leaderboard" class="page">
+            <h2 class="text-center">Global Leaderboard</h2>
+            <div class="podium">
+                <div class="rank second">
+                    <img src="https://i.pravatar.cc/150?u=2" alt="">
+                    <span>Rahul</span>
+                    <div class="score">1420 pts</div>
+                </div>
+                <div class="rank first">
+                    <i class="fa-solid fa-crown"></i>
+                    <img src="https://i.pravatar.cc/150?u=1" alt="">
+                    <span>Sneha</span>
+                    <div class="score">1500 pts</div>
+                </div>
+                <div class="rank third">
+                    <img src="https://i.pravatar.cc/150?u=3" alt="">
+                    <span>Amit</span>
+                    <div class="score">1380 pts</div>
+                </div>
+            </div>
+            <div class="rank-list" id="rank-items">
+                <!-- Rank items injected via JS -->
+            </div>
+        </section>
+
+        <!-- Student Dashboard -->
+        <section id="dashboard" class="page">
+            <div class="profile-header">
+                <img src="https://ui-avatars.com/api/?name=User&size=128" alt="Profile">
+                <h2>Abhishek Kumar</h2>
+                <p>Premium Member</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><h3>12</h3><p>Courses</p></div>
+                <div class="stat-card"><h3>85%</h3><p>Avg Score</p></div>
+                <div class="stat-card"><h3>24</h3><p>Badges</p></div>
+            </div>
+            <button class="btn-secondary" onclick="logout()">Logout</button>
+        </section>
+
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="nav-item active" onclick="showPage('home', this)">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </div>
+        <div class="nav-item" onclick="showPage('courses', this)">
+            <i class="fa-solid fa-book-open"></i>
+            <span>Courses</span>
+        </div>
+        <div class="nav-item" onclick="showPage('mocktest', this)">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <span>Tests</span>
+        </div>
+        <div class="nav-item" onclick="showPage('leaderboard', this)">
+            <i class="fa-solid fa-chart-simple"></i>
+            <span>Ranks</span>
+        </div>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
